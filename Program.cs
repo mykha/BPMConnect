@@ -25,9 +25,7 @@ namespace RequestAuthentification
     {
         // HTTP-адрес приложения.
         private const string baseUri = "http://localhost:82/";
-        // Контейнер для Cookie аутентификации bpm'online. Необходимо использовать в последующих запросах.
-        // Это самый важный результирующий объект, для формирования свойств которого разработана
-        // вся остальная функциональность примера.
+        // Контейнер для Cookie аутентификации bpm'online. 
         public static CookieContainer AuthCookie = new CookieContainer();
         // Строка запроса к методу Login сервиса AuthService.svc.
         private const string authServiceUri = baseUri + @"/ServiceModel/AuthService.svc/Login";
@@ -51,10 +49,7 @@ namespace RequestAuthentification
             {
                 using (var writer = new StreamWriter(requestStream))
                 {
-                    //var str = @"{
-                    //""UserName"":""" + userName + @""",
-                    //""UserPassword"":""" + userPassword + @"""
-                    //}";
+
                     var str = @"{""UserName"":""" + userName + @""",""UserPassword"":""" + userPassword + @"""}" ;
                     writer.Write(str);
                     //writer.Write("<UserName>Supervisor</UserName> <UserPassword>Supervisor</UserPassword>");
@@ -96,7 +91,6 @@ namespace RequestAuthentification
             // Определение метода запроса.
             authRequest.Method = "POST";
             // Определение типа контента запроса.
-            //'authRequest.ContentType = "application/json";
              authRequest.ContentType = "application/json";
             // Включение использования cookie в запросе.
             authRequest.CookieContainer = AuthCookie;
